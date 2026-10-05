@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Japan '26 - Storm Luther Stavenuiter</title>
 <link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="../assets/css/japan-map.css">
 </head>
 <body>
 
@@ -40,6 +42,7 @@
     <h1>Japan '26</h1>
   </div>
   <section class="section">
+    <div id="japan-map" class="japan-map" role="img" aria-label="Kaart van mijn route door Japan"></div>
     <div class="post-grid">
       <!-- Hier komen de blogposts over Japan, nieuwste eerst. Voorbeeld van één kaartje:
 
@@ -61,6 +64,10 @@
   <span>&copy; 2026 Storm Luther Stavenuiter</span>
   <span><a href="../contact.html">storm.stavenuiter@hotmail.com</a></span>
 </footer>
+
+<script src="../assets/vendor/leaflet/leaflet.js"></script>
+<script src="../assets/js/japan-route.js"></script>
+<script src="../assets/js/japan-map.js"></script>
 
 </body>
 </html>
