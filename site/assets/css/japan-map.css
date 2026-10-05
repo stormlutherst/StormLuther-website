@@ -32,3 +32,34 @@
   border-radius: 0;
   box-shadow: none;
 }
+
+/* Wijken binnen een stop */
+
+.japan-map .japan-map-place.leaflet-tooltip {
+  font-size: 0.8rem;
+  padding: 1px 6px;
+  border: 1px solid var(--border, #e2e2e2);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Namen van wijken pas tonen als je ver genoeg bent ingezoomd */
+.japan-map:not(.show-place-labels) .japan-map-place {
+  display: none;
+}
+
+.japan-map-reset,
+.japan-map .japan-map-zoom {
+  font-family: var(--serif, Georgia, "Times New Roman", serif);
+  font-size: 0.85rem;
+  background: #fff;
+  color: #111;
+  border: 1px solid var(--border, #cfcfcf);
+  border-radius: 0;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.japan-map .japan-map-zoom {
+  margin-top: 8px;
+}
