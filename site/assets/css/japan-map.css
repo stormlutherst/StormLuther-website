@@ -63,3 +63,43 @@
 .japan-map .japan-map-zoom {
   margin-top: 8px;
 }
+
+/* Stop met wijken: stip met cijfer-badge */
+
+.japan-map-city {
+  background: none;
+  border: 0;
+}
+
+.japan-map-city-dot {
+  display: block;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 2px solid #111;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.japan-map-city-dot.is-last {
+  background: #111;
+}
+
+.japan-map-city-badge {
+  position: absolute;
+  top: -9px;
+  right: -11px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 9px;
+  background: #111;
+  color: #fff;
+  font-family: var(--serif, Georgia, "Times New Roman", serif);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+}

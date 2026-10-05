@@ -59,6 +59,19 @@
     return box;
   }
 
+  // Stip met een badge die het aantal wijken/plekken toont
+  function cityIcon(isLast, count) {
+    return L.divIcon({
+      className: 'japan-map-city',
+      html: '<span class="japan-map-city-dot' + (isLast ? ' is-last' : '') + '"></span>' +
+            '<span class="japan-map-city-badge">' + count + '</span>',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+      popupAnchor: [0, -16],
+      tooltipAnchor: [22, 6]
+    });
+  }
+
   if (points.length > 1) {
     L.polyline(points, { color: '#111', weight: 2, opacity: 0.7, dashArray: '6 6' }).addTo(map);
   }
@@ -76,21 +89,34 @@
       };
     }
 
-    var marker = L.circleMarker([s.lat, s.lon], {
-      radius: isLast ? 9 : 6,
-      color: '#111',
-      weight: 2,
-      fillColor: isLast ? '#111' : '#fff',
-      fillOpacity: 1
-    }).addTo(map);
+    var count = places.length;
+    var unit = s.placesLabel || 'wijken';
+    var caption = count ? s.name + ' \u00b7 ' + count + ' ' + unit : s.name;
+    var marker;
+
+    if (count) {
+      // Stop met wijken: stip met een cijfer-badge, zodat je ook uitgezoomd ziet dat er meer te zien is
+      marker = L.marker([s.lat, s.lon], {
+        icon: cityIcon(isLast, count),
+        title: caption
+      }).addTo(map);
+      cityMarkers.push(marker);
+    } else {
+      marker = L.circleMarker([s.lat, s.lon], {
+        radius: isLast ? 9 : 6,
+        color: '#111',
+        weight: 2,
+        fillColor: isLast ? '#111' : '#fff',
+        fillOpacity: 1
+      }).addTo(map);
+    }
     marker.bindPopup(popupContent(s, zoomToPlaces));
-    if (places.length) { cityMarkers.push(marker); }
 
     if (isLast) {
-      marker.bindTooltip(s.name, {
+      marker.bindTooltip(caption, {
         permanent: true,
         direction: 'right',
-        offset: [12, 0],
+        offset: count ? [0, 0] : [12, 0],
         className: 'japan-map-label'
       });
     }
