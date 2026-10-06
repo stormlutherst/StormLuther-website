@@ -4,13 +4,14 @@
 //
 // Optioneel per stop:
 //   post: "naam-van-de-post.html"   link naar de blogpost bij die stop
+//   placesLabel: "plekken"          wat het cijfer bij de stop telt (standaard: "wijken")
 //   places: [ ... ]                 wijken of plekken binnen die stop, in de volgorde van je bezoek.
 //                                   Ze verschijnen pas als je inzoomt en tellen niet mee in de routelijn.
 //
 // Optioneel per wijk:
 //   label: "left" | "right" | "top" | "bottom"   aan welke kant de naam staat (standaard: rechts)
 window.JAPAN_ROUTE = [
-  { name: "Tokyo", lat: 35.6812, lon: 139.7671,
+  { name: "Tokyo", lat: 35.6812, lon: 139.7671, post: "alles-drijft-in-de-soep.html",
     places: [
       { name: "Senzoku",       lat: 35.7250, lon: 139.7925, label: "top" },
       { name: "Asakusa",       lat: 35.7148, lon: 139.7967 },

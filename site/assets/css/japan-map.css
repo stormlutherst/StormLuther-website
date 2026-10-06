@@ -103,3 +103,53 @@
   line-height: 14px;
   text-align: center;
 }
+
+/* Japan-blogpost: titel en kaart even breed als de tekst */
+
+.page-heading.japan-post-title {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.japan-map--post + .post-body {
+  margin-top: 32px;
+}
+
+/* Japan-blogpost met hoofdfoto: menu en titel in wit over de foto, met een donkere gloed voor de leesbaarheid */
+
+.japan-hero img {
+  object-position: 50% 60%;
+}
+
+.japan-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 30%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+.japan-hero .post-hero-title {
+  z-index: 2;
+}
+
+.japan-hero .site-header,
+.japan-hero .site-header a {
+  color: #fff;
+}
+
+.japan-hero .site-header .submenu a {
+  color: #111;
+}
+
+/* Intro onder de hoofdfoto */
+
+.post-lead {
+  max-width: 760px;
+  margin: 40px auto 0;
+  font-size: 1.35rem;
+  line-height: 1.45;
+}
