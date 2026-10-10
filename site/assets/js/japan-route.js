@@ -25,5 +25,11 @@ window.JAPAN_ROUTE = [
       { name: "Akihabara",     lat: 35.6984, lon: 139.7731 },
       { name: "Shimokitazawa", lat: 35.6613, lon: 139.6681, label: "left" }
     ] },
-  { name: "Fuji", lat: 35.5164, lon: 138.7656, post: "dankbaar-voor-voeten-naast-de-meesteres.html" }
+  { name: "Fuji", lat: 35.5164, lon: 138.7656, post: "dankbaar-voor-voeten-naast-de-meesteres.html",
+    placesLabel: "beklimmingen",
+    places: [
+      // Plaatsen bij benadering: pas de naam en de coördinaten aan als je de echte plek weet
+      { name: "Waterval", lat: 35.5290, lon: 138.7530, label: "left" },
+      { name: "Bergtocht", lat: 35.5260, lon: 138.7790 }
+    ] }
 ];

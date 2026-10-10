@@ -191,3 +191,12 @@
   color: #fff;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
+
+/* Dezelfde plaatsnaam, boven de titel van een post op het Japan-overzicht */
+
+.post-card .post-label {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  color: var(--muted, #666);
+  text-shadow: none;
+}
