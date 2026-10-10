@@ -6,6 +6,7 @@
 
   var PLACES_ZOOM = 11;   // vanaf dit zoomniveau worden de wijken getoond
   var LABEL_ZOOM = 11;    // vanaf hier staan de namen van de wijken er permanent bij
+  var STOP_OFFSETS = { right: [16, 0], left: [-16, 0], top: [0, -15], bottom: [0, 15] };
   var OFFSETS = { right: [8, 0], left: [-8, 0], top: [0, -8], bottom: [0, 8] };
 
   var el = document.getElementById('japan-map');
@@ -34,9 +35,8 @@
   var hasPlaces = false;
   var cityMarkers = [];   // stops met wijken: hun stip verdwijnt bij het inzoomen
 
-  // Inhoud van een popup: naam (of link naar de post) en eventueel een knop om op de wijken in te zoomen
-  function popupContent(item, onZoom) {
-    var box = document.createElement('div');
+  // Inhoud van een popup: naam, of een link naar de post als die er is
+  function popupContent(item) {
     var title;
     if (item.post) {
       title = document.createElement('a');
@@ -45,30 +45,19 @@
       title = document.createElement('span');
     }
     title.textContent = item.name;
-    box.appendChild(title);
-
-    if (onZoom) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'japan-map-zoom';
-      btn.textContent = 'Bekijk de wijken';
-      btn.addEventListener('click', function () { map.closePopup(); onZoom(); });
-      box.appendChild(document.createElement('br'));
-      box.appendChild(btn);
-    }
-    return box;
+    return title;
   }
 
-  // Stip met een badge die het aantal wijken/plekken toont
-  function cityIcon(isLast, count) {
+  // Genummerde stip voor een hoofdstop; met een "+N"-badge als er wijken in zitten
+  function stopIcon(number, isLast, count) {
     return L.divIcon({
       className: 'japan-map-city',
-      html: '<span class="japan-map-city-dot' + (isLast ? ' is-last' : '') + '"></span>' +
-            '<span class="japan-map-city-badge">' + count + '</span>',
-      iconSize: [18, 18],
-      iconAnchor: [9, 9],
-      popupAnchor: [0, -16],
-      tooltipAnchor: [22, 6]
+      html: '<span class="japan-map-city-dot' + (isLast ? ' is-last' : '') + '">' + number + '</span>' +
+            (count ? '<span class="japan-map-city-badge">+' + count + '</span>' : ''),
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -14],
+      tooltipAnchor: [0, 0]
     });
   }
 
@@ -79,47 +68,46 @@
   stops.forEach(function (s, i) {
     var isLast = i === stops.length - 1;
     var places = (s.places || []).filter(valid);
-
-    var zoomToPlaces = null;
-    if (places.length) {
-      hasPlaces = true;
-      zoomToPlaces = function () {
-        var pts = [[s.lat, s.lon]].concat(places.map(function (p) { return [p.lat, p.lon]; }));
-        map.fitBounds(pts, { padding: [30, 30], maxZoom: 13 });
-      };
-    }
-
     var count = places.length;
     var unit = s.placesLabel || 'wijken';
-    var caption = count ? s.name + ' \u00b7 ' + count + ' ' + unit : s.name;
-    var marker;
+    var caption = count ? s.name + ' · ' + count + ' ' + unit : s.name;
+
+    var marker = L.marker([s.lat, s.lon], {
+      icon: stopIcon(i + 1, isLast, count),
+      title: caption
+    }).addTo(map);
 
     if (count) {
-      // Stop met wijken: stip met een cijfer-badge, zodat je ook uitgezoomd ziet dat er meer te zien is
-      marker = L.marker([s.lat, s.lon], {
-        icon: cityIcon(isLast, count),
-        title: caption
-      }).addTo(map);
+      hasPlaces = true;
+      // Klik op een stop met wijken: meteen inzoomen op die wijken
+      marker.on('click', function () {
+        var pts = [[s.lat, s.lon]].concat(places.map(function (p) { return [p.lat, p.lon]; }));
+        map.fitBounds(pts, { padding: [30, 30], maxZoom: 13 });
+      });
       cityMarkers.push(marker);
     } else {
-      marker = L.circleMarker([s.lat, s.lon], {
-        radius: isLast ? 9 : 6,
-        color: '#111',
-        weight: 2,
-        fillColor: isLast ? '#111' : '#fff',
-        fillOpacity: 1
-      }).addTo(map);
+      marker.bindPopup(popupContent(s));
     }
-    marker.bindPopup(popupContent(s, zoomToPlaces));
 
-    if (isLast) {
-      marker.bindTooltip(caption, {
-        permanent: true,
-        direction: 'right',
-        offset: count ? [0, 0] : [12, 0],
-        className: 'japan-map-label'
-      });
+    // Naam bij elke stop; heeft de stop een post, dan is de naam een link naar dat verhaal
+    var tip;
+    if (s.post) {
+      tip = document.createElement('a');
+      tip.href = s.post;
+      tip.textContent = caption;
+    } else {
+      tip = caption;
     }
+    var side = STOP_OFFSETS[s.label] ? s.label : 'top';
+    var off = STOP_OFFSETS[side].slice();
+    if (side === 'top' && count) { off[1] -= 8; }   // ruimte voor de badge
+    marker.bindTooltip(tip, {
+      permanent: true,
+      interactive: !!s.post,
+      direction: side,
+      offset: off,
+      className: 'japan-map-label'
+    });
 
     places.forEach(function (p) {
       var dot = L.circleMarker([p.lat, p.lon], {
@@ -129,7 +117,7 @@
         fillColor: '#fff',
         fillOpacity: 1
       });
-      dot.bindPopup(popupContent(p, null));
+      dot.bindPopup(popupContent(p));
       var dir = OFFSETS[p.label] ? p.label : 'right';
       dot.bindTooltip(p.name, {
         permanent: true,

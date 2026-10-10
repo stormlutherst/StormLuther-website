@@ -22,7 +22,8 @@
   scroll-snap-align: start;
 }
 
-.carousel-track img {
+.carousel-track img,
+.carousel-track video {
   display: block;
   width: 100%;
   height: auto;
@@ -54,6 +55,10 @@
 
 .carousel-prev { left: -14px; }
 .carousel-next { right: -14px; }
+
+.carousel.no-scroll .carousel-btn {
+  display: none;   /* alles past al in beeld: geen pijltjes nodig */
+}
 
 .carousel-btn:disabled {
   opacity: 0.35;

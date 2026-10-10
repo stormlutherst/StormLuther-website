@@ -1,16 +1,18 @@
-// Pijltjes voor de fotocarrousel (.carousel). Zonder dit script blijft zijwaarts scrollen/vegen gewoon werken.
+// Carrousel in een blogpost: met de pijltjes één "scherm" opschuiven; vegen werkt ook.
 (function () {
   'use strict';
 
-  Array.prototype.forEach.call(document.querySelectorAll('.carousel'), function (carousel) {
-    var track = carousel.querySelector('.carousel-track');
-    var prev = carousel.querySelector('.carousel-prev');
-    var next = carousel.querySelector('.carousel-next');
+  document.querySelectorAll('.carousel').forEach(function (box) {
+    var track = box.querySelector('.carousel-track');
+    var prev = box.querySelector('.carousel-prev');
+    var next = box.querySelector('.carousel-next');
     if (!track || !prev || !next) { return; }
 
     function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      box.classList.toggle('no-scroll', max <= 2);
       prev.disabled = track.scrollLeft <= 2;
-      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+      next.disabled = track.scrollLeft >= max - 2;
     }
 
     prev.addEventListener('click', function () {
@@ -19,9 +21,9 @@
     next.addEventListener('click', function () {
       track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
     });
-
     track.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
+    window.addEventListener('load', update);
     update();
   });
 })();

@@ -21,13 +21,15 @@
   font-size: 0.95rem;
 }
 
-.japan-map .leaflet-popup-content a {
+.japan-map .leaflet-popup-content a,
+.japan-map .japan-map-label a {
   color: inherit;
   text-decoration: underline;
 }
 
 .japan-map-label.leaflet-tooltip {
   font-weight: 500;
+  padding: 1px 7px;
   border: 1px solid var(--border, #e2e2e2);
   border-radius: 0;
   box-shadow: none;
@@ -48,8 +50,7 @@
   display: none;
 }
 
-.japan-map-reset,
-.japan-map .japan-map-zoom {
+.japan-map-reset {
   font-family: var(--serif, Georgia, "Times New Roman", serif);
   font-size: 0.85rem;
   background: #fff;
@@ -60,10 +61,6 @@
   cursor: pointer;
 }
 
-.japan-map .japan-map-zoom {
-  margin-top: 8px;
-}
-
 /* Stop met wijken: stip met cijfer-badge */
 
 .japan-map-city {
@@ -72,23 +69,31 @@
 }
 
 .japan-map-city-dot {
-  display: block;
-  width: 18px;
-  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   box-sizing: border-box;
   border: 2px solid #111;
   border-radius: 50%;
   background: #fff;
+  color: #111;
+  font-family: var(--serif, Georgia, "Times New Roman", serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .japan-map-city-dot.is-last {
   background: #111;
+  color: #fff;
 }
 
 .japan-map-city-badge {
   position: absolute;
-  top: -9px;
-  right: -11px;
+  top: -11px;
+  right: -16px;
   min-width: 18px;
   height: 18px;
   padding: 0 4px;
@@ -173,4 +178,16 @@
   font-weight: 700;
   line-height: 1.3;
   margin: 2em 0 0.6em;
+}
+
+/* Kleine regel boven de titel in de hoofdfoto: de plek waar het verhaal speelt */
+
+.post-label {
+  margin: 0 0 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
