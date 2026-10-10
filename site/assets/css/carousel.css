@@ -97,3 +97,17 @@
 @media (max-width: 640px) {
   .photo-row { gap: 6px; }
 }
+
+/* Eén losse foto tussen de tekst */
+
+.photo-single {
+  max-width: 400px;
+  margin: 2em auto;
+}
+
+.photo-single img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f2f2f2;
+}

@@ -28,8 +28,7 @@ window.JAPAN_ROUTE = [
   { name: "Fuji", lat: 35.5164, lon: 138.7656, post: "dankbaar-voor-voeten-naast-de-meesteres.html",
     placesLabel: "beklimmingen",
     places: [
-      // Plaatsen bij benadering: pas de naam en de coördinaten aan als je de echte plek weet
-      { name: "Waterval", lat: 35.5290, lon: 138.7530, label: "left" },
-      { name: "Bergtocht", lat: 35.5260, lon: 138.7790 }
+      { name: "Haha-no-Shirataki", lat: 35.535437, lon: 138.7826077, label: "left" },
+      { name: "Top Shimoyama",     lat: 35.532490, lon: 138.806595 }
     ] }
 ];

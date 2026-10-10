@@ -53,7 +53,7 @@
     return L.divIcon({
       className: 'japan-map-city',
       html: '<span class="japan-map-city-dot' + (isLast ? ' is-last' : '') + '">' + number + '</span>' +
-            (count ? '<span class="japan-map-city-badge">+' + count + '</span>' : ''),
+            (count ? '<span class="japan-map-city-badge">' + count + '</span>' : ''),
       iconSize: [24, 24],
       iconAnchor: [12, 12],
       popupAnchor: [0, -14],
@@ -94,9 +94,9 @@
     if (s.post) {
       tip = document.createElement('a');
       tip.href = s.post;
-      tip.textContent = caption;
+      tip.textContent = s.name;
     } else {
-      tip = caption;
+      tip = s.name;
     }
     var side = STOP_OFFSETS[s.label] ? s.label : 'top';
     var off = STOP_OFFSETS[side].slice();
