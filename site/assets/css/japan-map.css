@@ -215,3 +215,15 @@
   max-width: none;
   margin: 0 0 40px;
 }
+
+/* Bijschrift bij de kaart als je bent ingezoomd */
+
+.japan-map .japan-map-caption {
+  padding: 3px 9px;
+  background: #fff;
+  border: 1px solid var(--border, #cfcfcf);
+  font-family: var(--serif, Georgia, "Times New Roman", serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #111;
+}

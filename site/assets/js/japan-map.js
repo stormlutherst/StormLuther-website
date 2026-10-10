@@ -33,7 +33,8 @@
   var points = stops.map(function (s) { return [s.lat, s.lon]; });
   var placesLayer = L.layerGroup();
   var hasPlaces = false;
-  var cityMarkers = [];   // stops met wijken: hun stip verdwijnt bij het inzoomen
+  var cityMarkers = [];
+  var captions = [];      // per stop met wijken: positie en bijschrift ("Tokyo \u00b7 8 wijken")   // stops met wijken: hun stip verdwijnt bij het inzoomen
 
   // Inhoud van een popup: naam, of een link naar de post als die er is
   function popupContent(item) {
@@ -85,6 +86,7 @@
         map.fitBounds(pts, { padding: [30, 30], maxZoom: 13 });
       });
       cityMarkers.push(marker);
+      captions.push({ lat: s.lat, lon: s.lon, text: caption });
     } else {
       marker.bindPopup(popupContent(s));
     }
@@ -138,6 +140,33 @@
     }
   }
 
+  // Bijschrift linksonder als je ingezoomd bent: bij welke stop hoort wat je ziet (bijv. "Fuji · 2 beklimmingen")
+  var captionBox = null;
+  if (captions.length) {
+    var Caption = L.Control.extend({
+      options: { position: 'bottomleft' },
+      onAdd: function () {
+        captionBox = L.DomUtil.create('div', 'japan-map-caption');
+        captionBox.style.display = 'none';
+        return captionBox;
+      }
+    });
+    new Caption().addTo(map);
+  }
+
+  function updateCaption(zoomedIn) {
+    if (!captionBox) { return; }
+    if (!zoomedIn) { captionBox.style.display = 'none'; return; }
+    var c = map.getCenter();
+    var best = null, bestD = Infinity;
+    captions.forEach(function (x) {
+      var d = map.distance(c, [x.lat, x.lon]);
+      if (d < bestD) { bestD = d; best = x; }
+    });
+    captionBox.textContent = best ? best.text : '';
+    captionBox.style.display = best ? 'block' : 'none';
+  }
+
   // Wijken tonen/verbergen afhankelijk van het zoomniveau
   function update() {
     var z = map.getZoom();
@@ -152,6 +181,7 @@
     });
 
     el.classList.toggle('show-place-labels', z >= LABEL_ZOOM);
+    updateCaption(zoomedIn);
 
     // Op een telefoon kun je pas slepen als je bewust bent ingezoomd
     if (L.Browser.mobile) {
@@ -175,6 +205,7 @@
   }
 
   map.on('zoomend', update);
+  map.on('moveend', function () { updateCaption(map.getZoom() >= PLACES_ZOOM); });
   overview();
   update();
 
