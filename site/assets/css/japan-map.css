@@ -206,29 +206,12 @@
 .subscribe {
   max-width: 760px;
   margin: 32px auto;
-  padding: 22px 24px;
-  border: 1px solid var(--border, #e2e2e2);
 }
 
 .post-body + .subscribe { margin-top: 48px; }
-
-.subscribe .subscribe-title {
-  margin: 0 0 4px;
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
-.subscribe .subscribe-text {
-  margin: 0 0 14px;
-  color: var(--muted, #5c5c5c);
-}
 
 /* Op het Japan-overzicht even breed als de rest van de pagina */
 .section > .subscribe {
   max-width: none;
   margin: 0 0 40px;
-}
-
-.section > .post-grid + .subscribe {
-  margin: 48px 0 0;
 }

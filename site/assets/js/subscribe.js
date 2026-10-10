@@ -13,29 +13,16 @@
   var ACCOUNT = '2700383';
   var FORM = 'HBSS4x';
 
-  var TEKST_KOP = 'Mis geen update uit Japan';
-  var TEKST_SUB = 'Laat je e-mailadres achter en ontvang een mail zodra er een nieuw verhaal van de reis staat.';
-
   var blokken = document.querySelectorAll('[data-subscribe]');
   if (!blokken.length || !ACCOUNT || !FORM) { return; }
 
   blokken.forEach(function (blok) {
     blok.classList.add('subscribe');
 
-    var kop = document.createElement('p');
-    kop.className = 'subscribe-title';
-    kop.textContent = TEKST_KOP;
-
-    var sub = document.createElement('p');
-    sub.className = 'subscribe-text';
-    sub.textContent = TEKST_SUB;
-
     var form = document.createElement('div');
     form.className = 'ml-embedded';
     form.setAttribute('data-form', FORM);
 
-    blok.appendChild(kop);
-    blok.appendChild(sub);
     blok.appendChild(form);
   });
 
