@@ -30,5 +30,8 @@ window.JAPAN_ROUTE = [
     places: [
       { name: "Haha-no-Shirataki", lat: 35.535437, lon: 138.7826077, label: "left" },
       { name: "Top Shimoyama",     lat: 35.532490, lon: 138.806595 }
-    ] }
+    ] },
+  { name: "Takayama", lat: 36.1461, lon: 137.2522, post: "mijn-praalwagen-mag-shinen.html",
+    placesLabel: "wandelingen", placesLabelOne: "wandeling",
+    places: [ { name: "Kamikōchi", lat: 36.2490, lon: 137.6370 } ] }
 ];

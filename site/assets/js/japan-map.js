@@ -71,6 +71,7 @@
     var places = (s.places || []).filter(valid);
     var count = places.length;
     var unit = s.placesLabel || 'wijken';
+    if (count === 1 && s.placesLabelOne) { unit = s.placesLabelOne; }
     var caption = count ? s.name + ' · ' + count + ' ' + unit : s.name;
 
     var marker = L.marker([s.lat, s.lon], {
