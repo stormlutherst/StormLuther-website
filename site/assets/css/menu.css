@@ -143,3 +143,18 @@
 
   .site-header.nav-open nav.main-nav .submenu a { color: var(--muted, #5c5c5c); }
 }
+
+/* Smalle schermen: de bio-tabel onder elkaar zetten in plaats van naast elkaar */
+@media (max-width: 760px) {
+  .bio-table,
+  .bio-table tbody,
+  .bio-table tr,
+  .bio-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .bio-table td { overflow-wrap: anywhere; border: 0; padding: 0; width: 100%; }
+  .bio-table tr { padding: 14px 0; border-bottom: 1px solid var(--border, #ddd); }
+  .bio-table td:first-child { margin-bottom: 4px; }
+}

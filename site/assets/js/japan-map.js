@@ -32,6 +32,9 @@
 
   var points = stops.map(function (s) { return [s.lat, s.lon]; });
   var placesLayer = L.layerGroup();
+  var connectLayer = L.layerGroup();   // lijntjes van een stop naar een plek erbuiten (bijv. Takayama → Kamikochi)
+  var endDots = L.layerGroup();                    // kleine stip aan het eind van zo'n lijntje, alleen op het overzicht
+  var originDots = L.layerGroup();                 // de stop zelf, zodra de stop-stip verdwijnt bij het inzoomen
   var hasPlaces = false;
   var cityMarkers = [];
   var captions = [];      // per stop met wijken: positie en bijschrift ("Tokyo \u00b7 8 wijken")   // stops met wijken: hun stip verdwijnt bij het inzoomen
@@ -47,6 +50,16 @@
     }
     title.textContent = item.name;
     return title;
+  }
+
+  // Kleine ronde stip (gevuld of hol) als marker
+  function dotIcon(filled) {
+    return L.divIcon({
+      className: 'japan-map-dot' + (filled ? ' is-filled' : ''),
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+      tooltipAnchor: [0, 0]
+    });
   }
 
   // Genummerde stip voor een hoofdstop; met een "+N"-badge als er wijken in zitten
@@ -112,6 +125,35 @@
       className: 'japan-map-label'
     });
 
+
+    // Uitstapje: een lijntje met pijl van de stop naar de plek, zodat je ziet dat ik er ook ben geweest
+    if (s.connect) {
+      places.forEach(function (p) {
+        var from = [s.lat, s.lon], to = [p.lat, p.lon];
+        L.polyline([from, to], { color: '#111', weight: 2, opacity: 0.8, dashArray: '2 5' }).addTo(connectLayer);
+
+        // pijlpunt op 85% van de lijn, gedraaid in de richting van de plek
+        var a = map.project(from, 10), b = map.project(to, 10);
+        var angle = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+        var tip = [from[0] + (to[0] - from[0]) * 0.85, from[1] + (to[1] - from[1]) * 0.85];
+        L.marker(tip, {
+          interactive: false,
+          icon: L.divIcon({
+            className: 'japan-map-arrow',
+            html: '<span style="transform:rotate(' + angle + 'deg)">&#9654;</span>',
+            iconSize: [14, 14],
+            iconAnchor: [7, 7]
+          })
+        }).addTo(connectLayer);
+
+        L.marker(to, { interactive: false, icon: dotIcon(false) }).addTo(endDots);
+      });
+      // Ingezoomd verdwijnt de stop-stip; dan blijft een kleine stip met de naam staan
+      var origin = L.marker([s.lat, s.lon], { interactive: false, icon: dotIcon(true) });
+      origin.bindTooltip(s.name, { permanent: true, direction: 'left', offset: [-8, 0], className: 'japan-map-place' });
+      originDots.addLayer(origin);
+    }
+
     places.forEach(function (p) {
       var dot = L.circleMarker([p.lat, p.lon], {
         radius: 5,
@@ -175,6 +217,8 @@
 
     if (zoomedIn && !map.hasLayer(placesLayer)) { placesLayer.addTo(map); }
     if (!zoomedIn && map.hasLayer(placesLayer)) { map.removeLayer(placesLayer); }
+    if (zoomedIn) { originDots.addTo(map); if (map.hasLayer(endDots)) { map.removeLayer(endDots); } }
+    else { endDots.addTo(map); if (map.hasLayer(originDots)) { map.removeLayer(originDots); } }
 
     cityMarkers.forEach(function (m) {
       if (zoomedIn && map.hasLayer(m)) { map.removeLayer(m); }
@@ -208,6 +252,7 @@
   map.on('zoomend', update);
   map.on('moveend', function () { updateCaption(map.getZoom() >= PLACES_ZOOM); });
   overview();
+  connectLayer.addTo(map);   // pas na overview(): de kaart moet eerst een positie hebben
   update();
 
   window.addEventListener('load', function () { map.invalidateSize(); });

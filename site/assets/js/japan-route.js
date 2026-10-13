@@ -32,6 +32,6 @@ window.JAPAN_ROUTE = [
       { name: "Top Shimoyama",     lat: 35.532490, lon: 138.806595 }
     ] },
   { name: "Takayama", lat: 36.1461, lon: 137.2522, post: "mijn-praalwagen-mag-shinen.html",
-    placesLabel: "wandelingen", placesLabelOne: "wandeling",
+    placesLabel: "wandelingen", placesLabelOne: "wandeling", connect: true,
     places: [ { name: "Kamikōchi", lat: 36.2490, lon: 137.6370 } ] }
 ];
