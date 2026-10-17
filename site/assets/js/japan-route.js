@@ -35,7 +35,7 @@ window.JAPAN_ROUTE = [
     placesLabel: "wandelingen", placesLabelOne: "wandeling", connect: true,
     places: [ { name: "Kamikōchi", lat: 36.2490, lon: 137.6370 } ] },
   { name: "Osaka", lat: 34.6937, lon: 135.5023, post: "blauwe-draak-gouden-baby-shaki-shaki.html",
-    placesLabel: "plekken", placesLabelOne: "plek", label: "top",
+    placesLabel: "highlights", placesLabelOne: "highlight", label: "top",
     places: [
       { name: "Keitakuen Garden", lat: 34.6513, lon: 135.5131, label: "right" },
       { name: "Dōtonbori",        lat: 34.6687, lon: 135.5013, label: "right" },
@@ -43,7 +43,7 @@ window.JAPAN_ROUTE = [
       { name: "Orange Street",    lat: 34.6712, lon: 135.4935, label: "left" }
     ] },
   { name: "Kyoto", lat: 35.0116, lon: 135.7681, post: "blauwe-draak-gouden-baby-shaki-shaki.html",
-    placesLabel: "plekken", placesLabelOne: "plek", label: "right",
+    placesLabel: "highlights", placesLabelOne: "highlight", label: "right",
     places: [
       { name: "Kyoto National Museum",       lat: 34.9900, lon: 135.7727, label: "bottom" },
       { name: "Kiyomizu-dera",               lat: 34.9949, lon: 135.7850 },
