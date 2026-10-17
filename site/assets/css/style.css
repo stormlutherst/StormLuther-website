@@ -392,8 +392,11 @@ footer.site-footer a { text-decoration: underline; }
   margin: 0 0 32px;
 }
 
-/* Homepage op de telefoon: de foto bijsnijden rond mij op de steen, met ruim uitzicht eromheen */
+/* Homepage op de telefoon: de foto vult het hele scherm, uitgesneden rond mij op de steen */
 @media (max-width: 760px) {
-  .hero-full { height: 74vh; min-height: 74vh; }
+  .hero-full { height: 100vh; min-height: 100vh; }
+  @supports (height: 100dvh) {
+    .hero-full { height: 100dvh; min-height: 100dvh; }
+  }
   .hero-full img { object-position: 0% 50%; }
 }
