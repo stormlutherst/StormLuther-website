@@ -1,0 +1,72 @@
+/* Japan-feitje van de dag: uitvergroot, als een feestelijke streamer */
+
+.japan-feitje {
+  position: relative;
+  margin: 3.2em -4% 2.6em;
+  padding: 2.4em 1.2em 1.4em;
+  text-align: center;
+  color: #1a1a1a;
+  background: #ffd23f;
+  border: 4px solid #d7263d;
+  border-radius: 6px;
+  transform: rotate(-1.5deg);
+  box-shadow: 6px 6px 0 #1a1a1a;
+}
+
+/* wimpeltjes langs de bovenkant */
+.japan-feitje::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: -26px;
+  height: 22px;
+  background:
+    linear-gradient(135deg, transparent 50%, transparent 50%),
+    repeating-linear-gradient(90deg, #d7263d 0 28px, #1b9aaa 28px 56px, #06a77d 56px 84px, #f46036 84px 112px);
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% 3px no-repeat,
+    conic-gradient(from 135deg at 50% 0, #000 90deg, transparent 0) top / 28px 22px repeat-x;
+  mask: linear-gradient(#000 0 0) top / 100% 3px no-repeat,
+    conic-gradient(from 135deg at 50% 0, #000 90deg, transparent 0) top / 28px 22px repeat-x;
+}
+
+.post-body .japan-feitje p { margin: 0; }
+
+.post-body .japan-feitje .jf-kop {
+  display: inline-block;
+  margin: 0 0 0.8em;
+  padding: 0.35em 0.9em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #d7263d;
+  border-radius: 999px;
+}
+
+.post-body .japan-feitje .jf-groot {
+  font-size: clamp(1.5rem, 6.4vw, 2.3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.post-body .japan-feitje .jf-groot em {
+  font-style: normal;
+  color: #d7263d;
+  text-decoration: underline wavy #d7263d;
+  text-underline-offset: 0.12em;
+}
+
+.post-body .japan-feitje .jf-klein {
+  margin-top: 0.9em;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .japan-feitje { margin-left: 0; margin-right: 0; box-shadow: 4px 4px 0 #1a1a1a; }
+}
