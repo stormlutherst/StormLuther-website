@@ -1,10 +1,11 @@
 /* Japan-feitje van de dag: de tekst uitvergroot en schuin, als een krantenkop */
 
 .post-body .japan-feitje {
-  margin: 2.6em 0;
-  padding: 0;
+  margin: 3em 0;
+  padding: 0.4em 0;
   text-align: left;
-  transform: rotate(-2deg);
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
 }
 
 .post-body .japan-feitje p { margin: 0; }
@@ -24,3 +25,5 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
+
+.post-body .japan-feitje .nb { white-space: nowrap; }
