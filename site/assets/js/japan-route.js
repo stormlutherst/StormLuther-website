@@ -34,6 +34,22 @@ window.JAPAN_ROUTE = [
   { name: "Takayama", lat: 36.1461, lon: 137.2522, post: "mijn-praalwagen-mag-shinen.html",
     placesLabel: "wandelingen", placesLabelOne: "wandeling", connect: true,
     places: [ { name: "Kamikōchi", lat: 36.2490, lon: 137.6370 } ] },
-  { name: "Osaka", lat: 34.6937, lon: 135.5023, post: "blauwe-draak-gouden-baby-shaki-shaki.html", label: "bottom" },
-  { name: "Kyoto", lat: 35.0116, lon: 135.7681, post: "blauwe-draak-gouden-baby-shaki-shaki.html", label: "right" }
+  { name: "Osaka", lat: 34.6937, lon: 135.5023, post: "blauwe-draak-gouden-baby-shaki-shaki.html",
+    placesLabel: "plekken", placesLabelOne: "plek", label: "top",
+    places: [
+      { name: "Keitakuen Garden", lat: 34.6513, lon: 135.5131, label: "right" },
+      { name: "Dōtonbori",        lat: 34.6687, lon: 135.5013, label: "right" },
+      { name: "Kuromon Ichiba",   lat: 34.6627, lon: 135.5064, label: "right" },
+      { name: "Orange Street",    lat: 34.6712, lon: 135.4935, label: "left" }
+    ] },
+  { name: "Kyoto", lat: 35.0116, lon: 135.7681, post: "blauwe-draak-gouden-baby-shaki-shaki.html",
+    placesLabel: "plekken", placesLabelOne: "plek", label: "right",
+    places: [
+      { name: "Kyoto National Museum",       lat: 34.9900, lon: 135.7727, label: "bottom" },
+      { name: "Kiyomizu-dera",               lat: 34.9949, lon: 135.7850 },
+      { name: "Hanamikōji",                  lat: 35.0033, lon: 135.7755 },
+      { name: "Nishiki Market",              lat: 35.0050, lon: 135.7649, label: "bottom" },
+      { name: "Kyoto Gyoen National Garden", lat: 35.0254, lon: 135.7621, label: "top" },
+      { name: "Hachimonjiya",                lat: 35.0066, lon: 135.7708, label: "top" }
+    ] }
 ];
