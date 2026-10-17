@@ -126,6 +126,23 @@
     });
 
 
+    // Pijltje halverwege het stuk van de vorige stop naar deze, zodat de volgorde van de reis te zien is
+    if (i > 0) {
+      var pa = [stops[i - 1].lat, stops[i - 1].lon], pb = [s.lat, s.lon];
+      var qa = map.project(pa, 10), qb = map.project(pb, 10);
+      var ang = Math.atan2(qb.y - qa.y, qb.x - qa.x) * 180 / Math.PI;
+      L.marker([(pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2], {
+        interactive: false,
+        zIndexOffset: -500,
+        icon: L.divIcon({
+          className: 'japan-map-arrow',
+          html: '<span style="transform:rotate(' + ang + 'deg)">&#9654;</span>',
+          iconSize: [14, 14],
+          iconAnchor: [7, 7]
+        })
+      }).addTo(connectLayer);
+    }
+
     // Uitstapje: een lijntje met pijl van de stop naar de plek, zodat je ziet dat ik er ook ben geweest
     if (s.connect) {
       places.forEach(function (p) {

@@ -34,17 +34,6 @@ window.JAPAN_ROUTE = [
   { name: "Takayama", lat: 36.1461, lon: 137.2522, post: "mijn-praalwagen-mag-shinen.html",
     placesLabel: "wandelingen", placesLabelOne: "wandeling", connect: true,
     places: [ { name: "Kamikōchi", lat: 36.2490, lon: 137.6370 } ] },
-  { name: "Osaka", lat: 34.6937, lon: 135.5023, post: "blauwe-draak-gouden-baby-shaki-shaki.html",
-    placesLabel: "plekken", placesLabelOne: "plek", label: "bottom",
-    places: [
-      { name: "Dōtonbori", lat: 34.6687, lon: 135.5013, label: "left" },
-      { name: "Shinsekai", lat: 34.6525, lon: 135.5063, label: "bottom" }
-    ] },
-  { name: "Kyoto", lat: 35.0116, lon: 135.7681, post: "blauwe-draak-gouden-baby-shaki-shaki.html",
-    placesLabel: "plekken", placesLabelOne: "plek", label: "right",
-    places: [
-      { name: "Keizerlijk paleis", lat: 35.0254, lon: 135.7621, label: "top" },
-      { name: "Pontochō",          lat: 35.0054, lon: 135.7708 },
-      { name: "Kiyomizu-dera",     lat: 34.9949, lon: 135.7850, label: "bottom" }
-    ] }
+  { name: "Osaka", lat: 34.6937, lon: 135.5023, post: "blauwe-draak-gouden-baby-shaki-shaki.html", label: "bottom" },
+  { name: "Kyoto", lat: 35.0116, lon: 135.7681, post: "blauwe-draak-gouden-baby-shaki-shaki.html", label: "right" }
 ];
