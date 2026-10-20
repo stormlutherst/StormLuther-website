@@ -57,5 +57,5 @@ window.JAPAN_ROUTE = [
     places: [ { name: "Kōraku-en", lat: 34.6667, lon: 133.9360 } ] },
   { name: "Uno", lat: 34.4960, lon: 133.9450, post: "karel-appel-was-here.html",
     placesLabel: "uitstapjes", placesLabelOne: "uitstapje", connect: true, label: "left",
-    places: [ { name: "Naoshima", lat: 34.4600, lon: 134.0200 } ] }
+    places: [ { name: "Naoshima", lat: 34.4510, lon: 134.0590 } ] }
 ];
