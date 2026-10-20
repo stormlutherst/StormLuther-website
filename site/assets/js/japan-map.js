@@ -163,7 +163,9 @@
           })
         }).addTo(connectLayer);
 
-        L.marker(to, { interactive: false, icon: dotIcon(false) }).addTo(endDots);
+        var endDot = L.marker(to, { interactive: false, icon: dotIcon(false) });
+        endDot.bindTooltip(p.name, { permanent: true, direction: 'right', offset: [8, 0], className: 'japan-map-label' });
+        endDot.addTo(endDots);
       });
       // Ingezoomd verdwijnt de stop-stip; dan blijft een kleine stip met de naam staan
       var origin = L.marker([s.lat, s.lon], { interactive: false, icon: dotIcon(true) });

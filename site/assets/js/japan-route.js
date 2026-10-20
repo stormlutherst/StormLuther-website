@@ -51,5 +51,11 @@ window.JAPAN_ROUTE = [
       { name: "Nishiki Market",              lat: 35.0050, lon: 135.7649, label: "bottom" },
       { name: "Kyoto Gyoen National Garden", lat: 35.0254, lon: 135.7621, label: "top" },
       { name: "Hachimonjiya",                lat: 35.0066, lon: 135.7708, label: "top" }
-    ] }
+    ] },
+  { name: "Okayama", lat: 34.6551, lon: 133.9195, post: "karel-appel-was-here.html",
+    placesLabel: "highlights", placesLabelOne: "highlight", label: "left",
+    places: [ { name: "Kōraku-en", lat: 34.6667, lon: 133.9360 } ] },
+  { name: "Uno", lat: 34.4960, lon: 133.9450, post: "karel-appel-was-here.html",
+    placesLabel: "uitstapjes", placesLabelOne: "uitstapje", connect: true, label: "left",
+    places: [ { name: "Naoshima", lat: 34.4600, lon: 134.0200 } ] }
 ];
