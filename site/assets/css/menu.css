@@ -28,16 +28,15 @@
   display: block;
   flex: 0 0 auto;
   width: 100%;
-  height: auto;             /* de hele foto over de volle breedte, nooit bijgesneden en zonder balken */
-  min-height: 0;
-  object-fit: contain;
-  background: #f2f2f2;
+  height: 60vh;
+  min-height: 380px;
+  object-fit: cover;
 }
 
 /* De titel blijft in het midden van de foto (los van de hoogte van het menu) */
 .post-hero.japan-hero .post-hero-title {
   top: auto;
-  bottom: 14%;
+  bottom: max(30vh, 190px);
   transform: translate(-50%, 50%);
 }
 
@@ -45,7 +44,7 @@
 .post-hero.japan-hero::after {
   top: auto;
   bottom: 0;
-  height: 38%;
+  height: max(60vh, 380px);
   background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.18) 55%, rgba(0, 0, 0, 0) 100%);
 }
 
@@ -158,33 +157,4 @@
   .bio-table td { overflow-wrap: anywhere; border: 0; padding: 0; width: 100%; }
   .bio-table tr { padding: 14px 0; border-bottom: 1px solid var(--border, #ddd); }
   .bio-table td:first-child { margin-bottom: 4px; }
-}
-
-/* Computer: de hele foto past op het scherm (max. 90% van de hoogte); de randen ernaast
-   worden gevuld met dezelfde foto, vervaagd */
-@media (min-width: 761px) {
-  .post-hero {
-    position: relative;
-    overflow: hidden;
-    background: #f2f2f2;
-  }
-  .post-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--hero-bg) center / cover no-repeat;
-    filter: blur(30px) brightness(0.8);
-    transform: scale(1.2);
-  }
-  .post-hero > .site-header.on-image { position: relative; z-index: 3; }
-  .post-hero > img,
-  .post-hero > .japan-hero-img {
-    position: relative;
-    z-index: 0;
-    width: auto;
-    max-width: 100%;
-    max-height: 90vh;
-    align-self: center;
-  }
-  .post-hero .post-hero-title { z-index: 2; }
 }

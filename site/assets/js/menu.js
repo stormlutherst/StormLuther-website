@@ -12,12 +12,6 @@
   document.head.appendChild(link);
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Openingsfoto: dezelfde foto, uitgerekt en vervaagd, vult de randen naast een smalle foto (geen zwarte balken)
-    var heroImg = document.querySelector('.post-hero > img');
-    if (heroImg) {
-      heroImg.parentNode.style.setProperty('--hero-bg', 'url("' + (heroImg.currentSrc || heroImg.src) + '")');
-    }
-
     var header = document.querySelector('.site-header');
     var nav = header && header.querySelector('nav.main-nav');
     if (!nav) { return; }
