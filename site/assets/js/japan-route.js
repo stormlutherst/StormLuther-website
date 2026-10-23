@@ -59,9 +59,8 @@ window.JAPAN_ROUTE = [
     placesLabel: "uitstapjes", placesLabelOne: "uitstapje", connect: true, label: "left",
     places: [ { name: "Naoshima", lat: 34.4510, lon: 134.0590, endLabel: true } ] },
   { name: "Hiroshima", lat: 34.3853, lon: 132.4553, post: "bedrukte-stilte-voor-altijd.html",
-    placesLabel: "highlights en musea", placesLabelOne: "highlight", label: "bottom",
+    placesLabel: "musea", placesLabelOne: "museum", label: "bottom",
     places: [
-      { name: "Atoomkoepel",               lat: 34.3955, lon: 132.4536, label: "top" },
       { name: "Peace Memorial Park",       lat: 34.3925, lon: 132.4529, label: "left" },
       { name: "Peace Memorial Museum",     lat: 34.3915, lon: 132.4549, label: "right" },
       { name: "Fukuromachi Elementary School Peace Museum", lat: 34.3941, lon: 132.4573, label: "right" },
