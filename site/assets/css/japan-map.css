@@ -210,6 +210,46 @@
 
 .post-body + .subscribe { margin-top: 48px; }
 
+/* Het MailerLite-formulier: klein, wit en rustig in plaats van een groot grijs blok */
+.subscribe .ml-form-embedContainer .ml-form-embedWrapper,
+.subscribe .ml-form-embedContainer .ml-form-embedWrapper.embedForm {
+  background: #fff !important;
+  border: 1px solid var(--border, #e2e2e2) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+}
+.subscribe .ml-form-embedContainer .ml-form-embedBody,
+.subscribe .ml-form-embedContainer .ml-form-successBody {
+  padding: 18px 20px 6px !important;
+}
+.subscribe .ml-form-embedContainer .ml-form-embedContent { margin-bottom: 10px !important; }
+.subscribe .ml-form-embedContainer .ml-form-embedContent h4 {
+  font-family: var(--serif, Georgia, "Times New Roman", serif) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: var(--text, #111) !important;
+  margin: 0 0 4px !important;
+}
+.subscribe .ml-form-embedContainer .ml-form-embedContent p {
+  font-family: var(--serif, Georgia, "Times New Roman", serif) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+  color: var(--muted, #666) !important;
+}
+.subscribe .ml-form-embedContainer .ml-form-fieldRow input,
+.subscribe .ml-form-embedContainer .ml-form-embedSubmit button {
+  font-size: 0.9rem !important;
+  min-height: 0 !important;
+  padding: 8px 10px !important;
+  border-radius: 0 !important;
+}
+.subscribe .ml-form-embedContainer .ml-form-embedSubmit button.primary {
+  background: #111 !important;
+  color: #fff !important;
+}
+
 /* Op het Japan-overzicht even breed als de rest van de pagina */
 .section > .subscribe {
   max-width: none;
