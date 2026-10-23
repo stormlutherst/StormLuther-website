@@ -214,7 +214,7 @@
 .subscribe .ml-form-embedContainer .ml-form-embedWrapper,
 .subscribe .ml-form-embedContainer .ml-form-embedWrapper.embedForm {
   background: #fff !important;
-  border: 1px solid var(--border, #e2e2e2) !important;
+  border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   max-width: 420px !important;
@@ -232,7 +232,8 @@
   color: var(--text, #111) !important;
   margin: 0 0 4px !important;
 }
-.subscribe .ml-form-embedContainer .ml-form-embedContent p {
+.subscribe .ml-form-embedContainer .ml-form-embedContent p { display: none !important; }   /* korter: alleen kop, veld en knop */
+.subscribe .ml-form-embedContainer .ml-form-embedContent p.ml-keep {
   font-family: var(--serif, Georgia, "Times New Roman", serif) !important;
   font-size: 0.85rem !important;
   line-height: 1.4 !important;

@@ -1,21 +1,41 @@
-/* Reactie-blok onder een artikel */
+/* Blokje onder een artikel: inschrijven, reageren en meer lezen bij elkaar */
 
-.reply-box {
-  margin: 56px 0 32px;
-  padding: 28px 0 0;
-  border-top: 1px solid var(--border, #ddd);
+.post-end {
+  max-width: 760px;
+  margin: 56px auto 32px;
+  padding: 28px 20px 26px;
+  border: 1px solid var(--text, #111);
   text-align: center;
 }
 
-.reply-title {
-  margin: 0 0 8px;
-  font-size: 1.3rem;
-  font-weight: 400;
+.post-end .subscribe {
+  max-width: none;
+  margin: 0 0 22px;
 }
 
-.reply-text {
-  margin: 0 0 18px;
-  color: var(--muted, #555);
+/* Het MailerLite-formulier gaat op in het blokje: geen eigen rand of vlak */
+.post-end .subscribe .ml-form-embedContainer .ml-form-embedWrapper,
+.post-end .subscribe .ml-form-embedContainer .ml-form-embedWrapper.embedForm {
+  border: 0 !important;
+  background: transparent !important;
+  max-width: 420px !important;
+}
+
+.post-end-row {
+  padding-top: 22px;
+  margin-top: 22px;
+  border-top: 1px solid var(--border, #ddd);
+}
+
+.post-end > .post-end-row:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+
+.post-end-label {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
 }
 
 .reply-button {
