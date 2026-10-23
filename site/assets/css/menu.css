@@ -28,15 +28,17 @@
   display: block;
   flex: 0 0 auto;
   width: 100%;
-  height: 60vh;
+  height: 80vh;
   min-height: 380px;
-  object-fit: cover;
+  object-fit: contain;      /* de hele foto zichtbaar, nooit bijgesneden */
+  object-position: center !important;
+  background: #111;
 }
 
 /* De titel blijft in het midden van de foto (los van de hoogte van het menu) */
 .post-hero.japan-hero .post-hero-title {
   top: auto;
-  bottom: max(30vh, 190px);
+  bottom: max(40vh, 190px);
   transform: translate(-50%, 50%);
 }
 
@@ -44,7 +46,7 @@
 .post-hero.japan-hero::after {
   top: auto;
   bottom: 0;
-  height: max(60vh, 380px);
+  height: max(80vh, 380px);
   background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.18) 55%, rgba(0, 0, 0, 0) 100%);
 }
 
