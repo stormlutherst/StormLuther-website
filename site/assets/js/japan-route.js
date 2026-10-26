@@ -66,5 +66,7 @@ window.JAPAN_ROUTE = [
       { name: "Fukuromachi Elementary School Peace Museum", lat: 34.3941, lon: 132.4573, label: "right" },
       { name: "Hiroshima Museum of Art",   lat: 34.4013, lon: 132.4600, label: "top" },
       { name: "Hiroshima City Museum of Contemporary Art", lat: 34.3870, lon: 132.4730, label: "left" }
-    ] }
+    ] },
+  { name: "Hatsukaichi", lat: 34.3486, lon: 132.3317, post: "blaast-een-tyfoon-het-piepschuim-weg.html", placesLabel: "uitstapjes", placesLabelOne: "uitstapje", connect: true, label: "top",
+    places: [ { name: "Miyajima", lat: 34.2960, lon: 132.3197, endLabel: true } ] }
 ];
