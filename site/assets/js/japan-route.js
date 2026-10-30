@@ -68,5 +68,11 @@ window.JAPAN_ROUTE = [
       { name: "Hiroshima City Museum of Contemporary Art", lat: 34.3870, lon: 132.4730, label: "left" }
     ] },
   { name: "Hatsukaichi", lat: 34.3486, lon: 132.3317, post: "blaast-een-tyfoon-het-piepschuim-weg.html", placesLabel: "uitstapjes", placesLabelOne: "uitstapje", connect: true, label: "top",
-    places: [ { name: "Miyajima", lat: 34.2960, lon: 132.3197, endLabel: true } ] }
+    places: [ { name: "Miyajima", lat: 34.2960, lon: 132.3197, endLabel: true } ] },
+  { name: "Tokyo 2.0", lat: 35.5625, lon: 139.7161, post: "tokyo-2-0.html", placesLabel: "wijken", label: "bottom",
+    places: [
+      { name: "Ginza", lat: 35.6717, lon: 139.7640, label: "right" },
+      { name: "Waseda", lat: 35.7094, lon: 139.7197, label: "left" },
+      { name: "Yokohama", lat: 35.4437, lon: 139.6380, label: "left" }
+    ] }
 ];

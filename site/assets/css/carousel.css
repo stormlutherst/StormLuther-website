@@ -111,3 +111,6 @@
   height: auto;
   background: #f2f2f2;
 }
+
+/* Carrousel met maar twee foto's: in het midden */
+.carousel--2 .carousel-track { justify-content: center; }
